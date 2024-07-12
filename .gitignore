@@ -160,3 +160,8 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+
+# ------- add by user
+# I use the git ignore python template, so some folder and file alrady added in gitignore
+TaskDocument
