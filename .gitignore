@@ -166,3 +166,4 @@ cython_debug/
 # I use the git ignore python template, so some folder and file alrady added in gitignore
 TaskDocument
 Video-Learning
+CodeAlpha_VoiceAssistantProject/*.mp3
