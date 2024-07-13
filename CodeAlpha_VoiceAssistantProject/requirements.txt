@@ -1,0 +1,5 @@
+Python=3.11.3
+SpeechRecognition=3.10.4 # python library for speech recognition
+gTTS=2.5.1 # Google TTS library for speech recognition
+playsound=1.3.0
+pyaudio=0.2.14
