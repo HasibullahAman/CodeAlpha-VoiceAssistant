@@ -18,4 +18,9 @@
         for scripting and development, allowing you to build a
         voice assistant that can compete with the likes of Siri,
         Alexa, and Google Assistant.</p>
+    <h3>Requirments: </h3>
+    <p>You can easily install all our project's dependencies by running the following command in your terminal (assuming you have pip installed):</p>
+    <code>
+    pip install -r requirements.txt
+    </code>
 </body>
