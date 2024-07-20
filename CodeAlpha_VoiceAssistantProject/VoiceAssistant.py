@@ -19,7 +19,9 @@ from gtts import gTTS
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
-
+MONTHS = ["january", "february", "march", "april", "may", "june","july", "august", "september","october", "november", "december"]
+DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+DAY_EXTENTIONS = ["rd", "th", "st", "nd"]
 
 def speak(text): # this is just for tacking text and reading
     tts = gTTS(text=text, lang='en', slow=False)
