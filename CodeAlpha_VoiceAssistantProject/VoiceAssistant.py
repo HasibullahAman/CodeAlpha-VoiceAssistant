@@ -10,10 +10,11 @@ def speak(text): # this is just for tacking text and reading
     filename = 'temp.mp3'
     tts.save(filename)
     playsound.playsound(filename)
+    os.close(filename) # we close mp3 file before the anohter task
     os.remove(filename)
     
-# speak("Please say everything you want!")
 
+# speak("Please say everything you want!")
 
 def get_audio():
     r = sr.Recognizer()
