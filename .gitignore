@@ -167,3 +167,5 @@ cython_debug/
 TaskDocument
 Video-Learning
 CodeAlpha_VoiceAssistantProject/*.mp3
+CodeAlpha_VoiceAssistantProject/credentials.json
+credentials.json
