@@ -100,7 +100,7 @@ def get_date(text):
     
     for word in text.split():
         if word in MONTHS:
-            month = month.index(month) + 1
+            month = month.index(word) + 1
         elif word in DAYS:
             day_of_week = DAYS.index(word)
         elif word.isdigit():
@@ -113,6 +113,12 @@ def get_date(text):
                         day = int(word[:found])
                     except:
                         pass
+    if month < today.month & month != -1:
+        year += 1
+    if day < today.day & month != -1 & day != -1:
+        month += 1
+    
+    
                     
 
 service = authenticate_google()
