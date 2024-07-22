@@ -160,8 +160,9 @@ def get_date(text):
             dif += 7
             if text.count("next") >= 1:
                 dif += 7
-
         return today + datetime.timedelta(dif)
+    if month == -1 or day  == -1:
+        return None
     return datetime.date(month=month, day=day, year=year)
 
 
