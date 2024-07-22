@@ -159,5 +159,7 @@ def get_date(text):
     return datetime.date(month=month, day=day, year=year)
 
 
-text = get_audio().lower()
-print(get_date(text))
+# text = get_audio().lower()
+# print(get_date(text))
+
+speak("Hellow this is Hasibullah Aman, how are you boy?")
