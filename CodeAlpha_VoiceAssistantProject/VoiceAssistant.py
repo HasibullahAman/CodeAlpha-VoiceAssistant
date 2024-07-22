@@ -36,6 +36,9 @@ DAY_EXTENTIONS = ["rd", "th", "st", "nd"]
 
 
 def speak(text):  # this is just for tacking text and reading
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()    
     
     # tts = gTTS(text=text, lang="en", slow=False)
     # filename = "temp.mp3"
