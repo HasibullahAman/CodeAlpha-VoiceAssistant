@@ -14,6 +14,7 @@ import os  # provides a collection of functions for interacting with the operati
 import time
 import speech_recognition as sr
 import pyttsx3
+import pytz
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
@@ -88,16 +89,21 @@ def authenticate_google():
     return service
 
 
-def get_events(n, service):
+def get_events(day, service):
     # Call the Calendar API
-    now = datetime.datetime.utcnow().isoformat() + "Z"  # 'Z' indicates UTC time
-    print(f"Getting the upcoming {n} events")
+    date = datetime.datetime.combine(day, datetime.datetime.min.time())
+    end_date = datetime.datetime.combine(day, datetime.datetime.max.time())
+    utc = pytz.UTC
+    date = date.astimezone(utc)
+    end_date = end_date.astimezone(utc)
+    
+                                      
     events_result = (
         service.events()
         .list(
             calendarId="primary",
-            timeMin=now,
-            maxResults=n,
+            timeMin=date.isoformat(),
+            timeMax=end_date.isoformat(),
             singleEvents=True,
             orderBy="startTime",
         )
@@ -162,4 +168,10 @@ def get_date(text):
 # text = get_audio().lower()
 # print(get_date(text))
 
-speak("Hellow this is Hasibullah Aman, how are you boy?")
+# speak("Hellow this is Hasibullah Aman, how are you boy?")
+
+SERVICE = authenticate_google()
+text = get_audio()
+get_events(get_date(text), SERVICE)
+
+
