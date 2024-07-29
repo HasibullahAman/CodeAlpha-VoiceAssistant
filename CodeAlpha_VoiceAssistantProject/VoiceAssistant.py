@@ -63,7 +63,7 @@ def get_audio():
             print("You said: ", said)
         except Exception as e:
             print("Exception: ", str(e))
-    return said
+    return said.lower()
 
 
 def authenticate_google():
@@ -122,7 +122,7 @@ def get_events(day, service):
             if int(start_time.split(":")[0]) < 12:
                 start_time += "AM"
             else:
-                start_time = str(int(start_time.split(":")[0])-12)
+                start_time = str(int(start_time.split(":")[0])-12) + start_time.split(":")[1]
                 start_time += "PM"
                 
             speak(event["summary"] + "at" + start_time)
@@ -183,7 +183,6 @@ def note(text):
         f.write(text)
     subprocess.Popen(["notepad.exe", file_name])
     
-note("Hasibullah Aman is the best!")
 
 
 # text = get_audio().lower()
@@ -191,17 +190,39 @@ note("Hasibullah Aman is the best!")
 
 # speak("Hellow this is Hasibullah Aman, how are you boy?")
 
-'''
+
+# WAKE = "hey Assistant"
+# SERVICE = authenticate_google()
+# print("started")
+# WAKE = "hey tim"
 SERVICE = authenticate_google()
-speak("Your Assistant is lunched!")
+print("Start")
 text = get_audio()
+
+# while True:
+#     print("Listening")
+    
+
+#     if text.count(WAKE) > 0:
+#         speak("I am ready")
+#         text = get_audio()
+
+
 
 CALENDAR_STRS = ["what do i have", "do i have plans", "am i busy"]
 for phrase in CALENDAR_STRS:
-    if phrase in text.lower():
+    if phrase in text:
         date = get_date(text)
         if date:
             get_events(date, SERVICE)
         else:
-            speak("Please Try Again")
-'''
+            speak("I don't understand")
+
+NOTE_STRS = ["make a note", "write this down", "remember this"]
+for phrase in NOTE_STRS:
+    if phrase in text:
+        speak("What would you like me to write down?")
+        note_text = get_audio()
+        note(note_text)
+        speak("I've made a note of that.")                
+                
