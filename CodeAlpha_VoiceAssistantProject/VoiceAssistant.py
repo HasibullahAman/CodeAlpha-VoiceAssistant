@@ -63,7 +63,7 @@ def get_audio():
             print("You said: ", said)
         except Exception as e:
             print("Exception: ", str(e))
-    return said
+    return said.lower()
 
 
 def authenticate_google():
@@ -122,7 +122,7 @@ def get_events(day, service):
             if int(start_time.split(":")[0]) < 12:
                 start_time += "AM"
             else:
-                start_time = str(int(start_time.split(":")[0])-12)
+                start_time = str(int(start_time.split(":")[0])-12) + start_time.split(":")[1]
                 start_time += "PM"
                 
             speak(event["summary"] + "at" + start_time)
@@ -181,66 +181,48 @@ def note(text):
     file_name = str(date).replace(":","-") + "-note.txt"
     with open(file_name, "w") as f:
         f.write(text)
-        
-    vscode_path = "C:\Users\Hasibullah Aman\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code"  # Replace with your VS Code path
-    subprocess.Popen([vscode_path])
+    subprocess.Popen(["notepad.exe", file_name])
     
-    
-    # soluattion:
-    import os
-import subprocess
-
-def note(text):
-  """Creates a note file, opens it in VS Code, and optionally writes text to it.
-
-  Args:
-      text: The text to write to the note file (optional).
-  """
-  date = datetime.datetime.now()
-  file_name = str(date).replace(":","-") + "-note.txt"
-
-  # Create the note file
-  with open(file_name, "w") as f:
-    if text:
-      f.write(text)
-
-  # Open VS Code with the note file (using a safe and reliable method)
-  username = os.getlogin()  # Get the current username dynamically
-  vscode_path = f"C:\\Users\\{username}\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code\\Visual Studio Code.exe"
-
-  # Option 1: Launch VS Code directly (preferred on Windows)
-  subprocess.Popen([vscode_path, file_name])  # Open the file in VS Code
-
-  # Option 2: Launch a command prompt to open VS Code (more cross-platform)
-  # subprocess.run(["cmd.exe", "/c", vscode_path, file_name])  # Uncomment for cross-platform
-
-  print(f"Note created: {file_name}")  # Print confirmation message
-
-if __name__ == "__main__":
-  note("Hasibullah Aman is the best!")
-    
-    #  = r"C:\Users\Hasibullah Aman\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code"
-    # subprocess.Popen(["Visual Studio Code",file_name])
-    
-    
-note("Hasibullah Aman is the best!")
 
 
 # text = get_audio().lower()
 # print(get_date(text))
 
 # speak("Hellow this is Hasibullah Aman, how are you boy?")
-'''
+
+
+# WAKE = "hey Assistant"
+# SERVICE = authenticate_google()
+# print("started")
+# WAKE = "hey tim"
 SERVICE = authenticate_google()
-speak("Your Assistant is lunched!")
+print("Start")
 text = get_audio()
+
+# while True:
+#     print("Listening")
+    
+
+#     if text.count(WAKE) > 0:
+#         speak("I am ready")
+#         text = get_audio()
+
+
 
 CALENDAR_STRS = ["what do i have", "do i have plans", "am i busy"]
 for phrase in CALENDAR_STRS:
-    if phrase in text.lower():
+    if phrase in text:
         date = get_date(text)
         if date:
             get_events(date, SERVICE)
         else:
-            speak("Please Try Again")
-'''
+            speak("I don't understand")
+
+NOTE_STRS = ["make a note", "write this down", "remember this"]
+for phrase in NOTE_STRS:
+    if phrase in text:
+        speak("What would you like me to write down?")
+        note_text = get_audio()
+        note(note_text)
+        speak("I've made a note of that.")                
+                
