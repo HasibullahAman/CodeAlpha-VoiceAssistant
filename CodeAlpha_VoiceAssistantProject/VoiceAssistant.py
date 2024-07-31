@@ -208,7 +208,6 @@ text = get_audio()
 #         text = get_audio()
 
 
-
 CALENDAR_STRS = ["what do i have", "do i have plans", "am i busy"]
 for phrase in CALENDAR_STRS:
     if phrase in text:
@@ -225,4 +224,3 @@ for phrase in NOTE_STRS:
         note_text = get_audio()
         note(note_text)
         speak("I've made a note of that.")                
-                
