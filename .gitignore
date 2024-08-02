@@ -170,3 +170,5 @@ CodeAlpha_VoiceAssistantProject/*.mp3
 CodeAlpha_VoiceAssistantProject/credentials.json
 credentials.json
 CodeAlpha_VoiceAssistantProject/*note.txt
+OtherCode
+CodeAlpha_VoiceAssistantProject/token.pickle

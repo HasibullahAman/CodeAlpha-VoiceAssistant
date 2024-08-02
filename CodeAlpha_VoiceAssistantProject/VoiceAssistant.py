@@ -14,7 +14,7 @@ import os  # provides a collection of functions for interacting with the operati
 import time
 import speech_recognition as sr
 import pyttsx3
-import pytz
+import pytz # This library is essential for handling time zones accurately and reliably in Python.
 import subprocess
 
 # If modifying these scopes, delete the file token.json.
@@ -184,27 +184,18 @@ def note(text):
     subprocess.Popen(["notepad.exe", file_name])
     
 
-
-# text = get_audio().lower()
-# print(get_date(text))
-
-# speak("Hellow this is Hasibullah Aman, how are you boy?")
-
-
 WAKE = "hey Assistant"
 SERVICE = authenticate_google()
 print("started")
-text = get_audio()
 
 while True:
     print("Listening")
+    text = get_audio()
     
-
     if text.count(WAKE) > 0:
         speak("I am ready")
         text = get_audio()
-
-
+        
     CALENDAR_STRS = ["what do i have", "do i have plans", "am i busy"]
     for phrase in CALENDAR_STRS:
         if phrase in text:
@@ -220,4 +211,6 @@ while True:
             speak("What would you like me to write down?")
             note_text = get_audio()
             note(note_text)
-            speak("I've made a note of that.")                
+            speak("I've made a note of that.")
+                
+
