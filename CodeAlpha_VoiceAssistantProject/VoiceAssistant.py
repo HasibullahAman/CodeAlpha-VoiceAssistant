@@ -1,21 +1,4 @@
-# import when I get the Google Calendar API
-from __future__ import print_function
-import datetime
-import pickle
-import os.path
-from googleapiclient.discovery import build
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
-
-# If modifying these scopes, delete the file token.pickle.
-# SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
-
-import os  # provides a collection of functions for interacting with the operating system
-import time
-import speech_recognition as sr
-import pyttsx3
-import pytz # This library is essential for handling time zones accurately and reliably in Python.
-import subprocess
+from helper import *
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
@@ -183,6 +166,10 @@ def note(text):
         f.write(text)
     subprocess.Popen(["notepad.exe", file_name])
     
+start_assistant = startApp
+webAssist = webAssist
+start_assistant.wishMe()
+start_assistant.username()
 
 WAKE = "hey Assistant"
 SERVICE = authenticate_google()
@@ -212,5 +199,9 @@ while True:
             note_text = get_audio()
             note(note_text)
             speak("I've made a note of that.")
-                
-
+    WIKIPEDIA = ["wikipedia","give me some infomation about","who is"]
+    for pharse in WIKIPEDIA:
+        if pharse in text:
+            webAssist.wiki(text)
+            
+            
