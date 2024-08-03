@@ -7,6 +7,12 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
+# inner import
+from startApp import startApp
+
+
+
+
 # If modifying these scopes, delete the file token.pickle.
 # SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
@@ -183,6 +189,9 @@ def note(text):
         f.write(text)
     subprocess.Popen(["notepad.exe", file_name])
     
+start_assistant = startApp
+start_assistant.wishMe()
+start_assistant.username()
 
 WAKE = "hey Assistant"
 SERVICE = authenticate_google()
