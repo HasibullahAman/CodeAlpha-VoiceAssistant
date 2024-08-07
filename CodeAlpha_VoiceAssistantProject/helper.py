@@ -9,12 +9,12 @@
 # # If modifying these scopes, delete the file token.pickle.
 # # SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
-# import os  # provides a collection of functions for interacting with the operating system
-# import time
-# import speech_recognition as sr
-# import pyttsx3
-# import pytz # This library is essential for handling time zones accurately and reliably in Python.
-# import subprocess
+import os  # provides a collection of functions for interacting with the operating system
+import time
+import speech_recognition as sr
+import pyttsx3
+import pytz # This library is essential for handling time zones accurately and reliably in Python.
+import subprocess
 
 # import subprocess
 # # import wolframalpha
@@ -38,12 +38,12 @@
 # # import shutil
 
 
-# # from twilio.rest import Client
-# # from clint.textui import progress
-# # from ecapture import ecapture as ec
-# # from bs4 import BeautifulSoup
-# # import win32com.client as wincl
-# # from urllib.request import urlopen
+# from twilio.rest import Client
+# from clint.textui import progress
+# from ecapture import ecapture as ec
+# from bs4 import BeautifulSoup
+# import win32com.client as wincl
+# from urllib.request import urlopen
 
 
 

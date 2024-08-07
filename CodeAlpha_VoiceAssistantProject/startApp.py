@@ -5,25 +5,6 @@ import speech_recognition as sr
 import shutil
 # import modules
 from helper import communacations
-"""
-def speak(text):  # this is just for tacking text and reading
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
-
-def get_audio():
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        audio = r.listen(source)
-        said = ""
-        try:
-            said = r.recognize_google(audio)
-            print("You said: ", said)
-        except Exception as e:
-            print("Exception: ", str(e))
-    return said.lower()
-   
-"""
 # create an instance from communacations class
 connect  = communacations
 

@@ -1,32 +1,21 @@
 import wikipedia
+from helper import communacations
 
 # import library
-# from VoiceAssistant import speak, get_audio
+# from VoiceAssistant import connect.speak, connect.get_audio
 
-def speak(text):  # this is just for tacking text and reading
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
-    
-def get_audio():
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        audio = r.listen(source)
-        said = ""
-        try:
-            said = r.recognize_google(audio)
-            print("You said: ", said)
-        except Exception as e:
-            print("Exception: ", str(e))
-    return said.lower()
+
+
+# create an instance from communacations class
+connect  = communacations
+
 class webAssist:
     def wiki(text):
-        speak('Searching Wikipedia...')
-        query = get_audio.replace("wikipedia", "")
+        connect.speak("Searching Wikipedia..")
+        query = text.replace("wikipedia", "")
         results = wikipedia.summary(query, sentences = 3)
-        speak("According to Wikipedia")
+        connect.speak("According to Wikipedia")
         print(results)
-        speak(results)
         
     # def youtube(self):
     #     pass
