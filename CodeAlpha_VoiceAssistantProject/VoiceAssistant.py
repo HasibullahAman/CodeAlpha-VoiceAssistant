@@ -1,5 +1,55 @@
-from helper import *
+# import when I get the Google Calendar API
+from __future__ import print_function
+import datetime
+import pickle
+import os.path
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+# If modifying these scopes, delete the file token.pickle.
+# SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
+import os  # provides a collection of functions for interacting with the operating system
+import time
+import speech_recognition as sr
+import pyttsx3
+import pytz # This library is essential for handling time zones accurately and reliably in Python.
+import subprocess
+
+import subprocess
+# import wolframalpha
+
+import tkinter
+# import json
+# import random
+# import operator
+
+
+import wikipedia
+# import webbrowser
+import os
+# import winshell
+# import pyjokes
+# import feedparser
+# import smtplib
+# import ctypes
+import time
+# import requests
+# import shutil
+
+
+# from twilio.rest import Client
+# from clint.textui import progress
+# from ecapture import ecapture as ec
+# from bs4 import BeautifulSoup
+# import win32com.client as wincl
+# from urllib.request import urlopen
+
+
+# inner import
+from helper import communacations
+from open_app import webAssist, operation
+from startApp import startApp
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
 MONTHS = [
@@ -18,36 +68,6 @@ MONTHS = [
 ]
 DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 DAY_EXTENTIONS = ["rd", "th", "st", "nd"]
-
-
-def speak(text):  # this is just for tacking text and reading
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
-
-    # tts = gTTS(text=text, lang="en", slow=False)
-    # filename = "temp.mp3"
-    # tts.save(filename)
-    # playsound.playsound(filename)
-    # os.close(filename)  # we close mp3 file before the anohter task
-    # os.remove(filename)
-
-
-# speak("Please say everything you want!")
-
-
-def get_audio():
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        audio = r.listen(source)
-        said = ""
-        try:
-            said = r.recognize_google(audio)
-            print("You said: ", said)
-        except Exception as e:
-            print("Exception: ", str(e))
-    return said.lower()
-
 
 def authenticate_google():
     """Shows basic usage of the Google Calendar API.
@@ -95,9 +115,9 @@ def get_events(day, service):
     events = events_result.get("items", [])
 
     if not events:
-        speak("No upcoming events found.")
+        connect.speak("No upcoming events found.")
     else:
-        speak(f"You have {len(events)} events on this day.")
+        connect.speak(f"You have {len(events)} events on this day.")
         for event in events:
             start = event["start"].get("dateTime", event["start"].get("date"))
             print(start, event["summary"])
@@ -108,7 +128,7 @@ def get_events(day, service):
                 start_time = str(int(start_time.split(":")[0])-12) + start_time.split(":")[1]
                 start_time += "PM"
                 
-            speak(event["summary"] + "at" + start_time)
+            connect.speak(event["summary"] + "at" + start_time)
 
 
 def get_date(text):
@@ -165,9 +185,12 @@ def note(text):
     with open(file_name, "w") as f:
         f.write(text)
     subprocess.Popen(["notepad.exe", file_name])
-    
+
+# create an instance from communacations class
+connect  = communacations
 start_assistant = startApp
-webAssist = webAssist
+webAss = webAssist
+operation = operation
 start_assistant.wishMe()
 start_assistant.username()
 
@@ -177,11 +200,11 @@ print("started")
 
 while True:
     print("Listening")
-    text = get_audio()
+    text = connect.get_audio()
     
     if text.count(WAKE) > 0:
-        speak("I am ready")
-        text = get_audio()
+        connect.speak("I am ready")
+        text = connect.get_audio()
         
     CALENDAR_STRS = ["what do i have", "do i have plans", "am i busy"]
     for phrase in CALENDAR_STRS:
@@ -190,18 +213,35 @@ while True:
             if date:
                 get_events(date, SERVICE)
             else:
-                speak("I don't understand")
+                connect.speak("I don't understand")
 
     NOTE_STRS = ["make a note", "write this down", "remember this"]
     for phrase in NOTE_STRS:
         if phrase in text:
-            speak("What would you like me to write down?")
-            note_text = get_audio()
+            connect.speak("What would you like me to write down?")
+            note_text = connect.get_audio()
             note(note_text)
-            speak("I've made a note of that.")
+            connect.speak("I've made a note of that.")
     WIKIPEDIA = ["wikipedia","give me some infomation about","who is"]
     for pharse in WIKIPEDIA:
         if pharse in text:
             webAssist.wiki(text)
+    YOUTUB = ["open youtube","run youtube","find youtube"]
+    for pharse in YOUTUB:
+        if pharse in text:
+            webAssist.youtube(text)
+    GOOGLE = ["open google","run google","find google"]
+    for pharse in GOOGLE:
+        if pharse in text:
+            webAssist.google(text)
+    GOOGLEMAP = ["where is","location of","find location of","map","countery"]
+    for pharse in GOOGLEMAP:
+        if pharse in text:
+            webAssist.google_map(text)
+    CAMERA = ["camera","take a photo"]
+    for pharse in CAMERA:
+        if pharse in text:
+            operation.take_photo()
+    
             
             
