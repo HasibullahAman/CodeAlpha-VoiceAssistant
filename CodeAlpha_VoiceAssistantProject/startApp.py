@@ -11,8 +11,7 @@ connect  = communacations
  
 class startApp:
     def wishMe():
-        hour = int(datetime.datetime.now().hour)
-        print(hour) 
+        hour = int(datetime.datetime.now().hour) 
         if hour>= 0 and hour<12:
             connect.speak("Good Morning Sir !")
         elif hour>= 12 and hour<18:
@@ -27,12 +26,10 @@ class startApp:
         uname = connect.get_audio()
         connect.speak("Welcome Mister")
         connect.speak(uname)
-        columns = shutil.get_terminal_size().columns
-        
+        columns = shutil.get_terminal_size().columns       
         print("#####################".center(columns))
         print("Welcome Mr.", uname.center(columns))
         print("#####################".center(columns))
-        
         connect.speak("How can i Help you, Sir")  
     
 

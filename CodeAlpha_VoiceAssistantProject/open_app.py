@@ -1,5 +1,14 @@
 import wikipedia
+import webbrowser
+import urllib.parse # for using google map
+import os
+
+
+
+
+# inner import
 from helper import communacations
+
 
 # import library
 # from VoiceAssistant import connect.speak, connect.get_audio
@@ -17,40 +26,55 @@ class webAssist:
         connect.speak("According to Wikipedia")
         print(results)
         
-    # def youtube(self):
-    #     pass
-    # def google(self):
-    #     pass
-    # def stackoverflow():
-    #     pass
-    # def music():
-    #     pass
-    # def where(): # search for a location
-    #     pass
-
+    def youtube():
+        connect.speak("Here you go to Youtube\n")
+        webbrowser.open("youtube.com")
+    def google():
+        connect.speak("Here you go to Google\n")
+        webbrowser.open("google.com")
+    def stackoverflow():
+        connect.speak("Here you go to Stack Over flow")
+        webbrowser.open("stackoverflow.com")
+    def google_map(text):
+        location = text.replace("where is", "", 1).strip()
+        connect.speak("User asked to locate: " + location)  
+        url = f"https://www.google.com/maps/place/{urllib.parse.quote(location)}"
+        webbrowser.open(url)
+        connect.speak(f"Opening {location} on Google Maps.")  # Confirm location
         
-
-
 class openApplication:
     pass
 
 class operation:
     def email(self):
         pass
-    def camara():
-        pass
+    def take_photo():
+        connect.speak("Opening your default camera...")
+        webbrowser.open("microsoft.windows.camera:")
+        connect.speak("Your camera has been opened.")
     def hibernate():
-        pass
+        os.system('shutdown /h')
+        connect.speak("System is going to hibernate. Please close all applications.")
+
     def shutdown():
-        pass
+        os.system('shutdown /s')
+        connect.speak("System is going to shut down. Please close all applications.")
+        
     def restart():
-        pass
+        os.system('shutdown /r')
+        connect.speak("System is going to restart. Please close all applications.")
+        
     def signout():
-        pass
+        os.system('shutdown -l')
+        connect.speak("System is signing out. Please close all applications.")
+
     def lock():
-        pass
+        os.system('rundll32.exe user32.dll,LockWorkStation')
+        connect.speak("System is locking. Please close all applications.")    
     def mute():
-        pass
+        os.system('rundll32.exe user32.dll,SystemParametersInfo 0x14,0,0,0,0')
+        connect.speak("System is muted. Please close all applications.")    
+
     def volume_up():
         pass
     def volume_down():
@@ -87,7 +111,8 @@ class operation:
         pass
     def currency_converter():
         pass
-    
+        # def music():
+    #     pass
     
     
 class aditionally:

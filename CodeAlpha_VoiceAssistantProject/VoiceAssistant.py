@@ -48,7 +48,7 @@ import time
 
 # inner import
 from helper import communacations
-from open_app import webAssist
+from open_app import webAssist, operation
 from startApp import startApp
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
@@ -190,6 +190,7 @@ def note(text):
 connect  = communacations
 start_assistant = startApp
 webAss = webAssist
+operation = operation
 start_assistant.wishMe()
 start_assistant.username()
 
@@ -225,5 +226,22 @@ while True:
     for pharse in WIKIPEDIA:
         if pharse in text:
             webAssist.wiki(text)
+    YOUTUB = ["open youtube","run youtube","find youtube"]
+    for pharse in YOUTUB:
+        if pharse in text:
+            webAssist.youtube(text)
+    GOOGLE = ["open google","run google","find google"]
+    for pharse in GOOGLE:
+        if pharse in text:
+            webAssist.google(text)
+    GOOGLEMAP = ["where is","location of","find location of","map","countery"]
+    for pharse in GOOGLEMAP:
+        if pharse in text:
+            webAssist.google_map(text)
+    CAMERA = ["camera","take a photo"]
+    for pharse in CAMERA:
+        if pharse in text:
+            operation.take_photo()
+    
             
             
