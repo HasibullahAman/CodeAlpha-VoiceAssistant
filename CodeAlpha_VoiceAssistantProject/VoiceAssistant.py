@@ -15,7 +15,7 @@ import speech_recognition as sr
 import pyttsx3
 import pytz # This library is essential for handling time zones accurately and reliably in Python.
 import subprocess
-
+import pyautogui
 import subprocess
 # import wolframalpha
 
@@ -48,7 +48,7 @@ import time
 
 # inner import
 from helper import communacations
-from open_app import webAssist, operation
+from open_app import webAssist, operation , openApplication
 from startApp import startApp
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
@@ -191,6 +191,7 @@ connect  = communacations
 start_assistant = startApp
 webAss = webAssist
 operation = operation
+Oapp = openApplication
 start_assistant.wishMe()
 start_assistant.username()
 
@@ -241,7 +242,78 @@ while True:
     CAMERA = ["camera","take a photo"]
     for pharse in CAMERA:
         if pharse in text:
-            operation.take_photo()
-    
-            
+            Oapp.take_photo()
+    HIBERNATE = ["hibernate"]
+    for pharase in HIBERNATE:
+        if pharse in text:
+            operation.make_hibernate()
+    SHUTDOWN = ["shutdown"]
+    for pharse in SHUTDOWN:
+        if pharse in text:
+            operation.make_shutdown()
+    RESTART = ["restart"]
+    for pharse in RESTART:
+        if pharse in text:
+            operation.make_restart()
+    SIGNOUT = ["signout"] 
+    for pharse in SIGNOUT:
+        if pharse in text:
+            operation.make_signout()
+    LOCK = ["lock",'locked'] 
+    for pharse in LOCK:
+        if pharse in text:
+            operation.make_lock()
+    MUTE = ['mute', 'muted']
+    for pharse in MUTE:
+        if pharse in text:
+            operation.make_mute()
+    SCREAN = ['screenshot','screan']
+    for pharse in SCREAN:
+        if pharse in text:
+            operation.take_screenshot()
+    OPEN_APP = ['open', 'run','lunch']
+    for pharse in OPEN_APP:
+        if pharse in text:
+            connect.speak("which application you want?")
+            print("listening on application...")
+            app = connect.get_audio()
+            if "word" in app.split(" "):
+                operation.open_app("winword")
+            elif "excel" in app.split(" "):
+                operation.open_app("excel")
+            elif "powerpoint" in app.split(" "):
+                operation.open_app("powerpnt")
+            elif "publisher" in app.split(" "):
+                operation.open_app("pub")
+            elif "access" in app.split(" "):
+                operation.open_app("msaccess")
+            elif "chrome" in app.split(" "):
+                operation.open_app("chrome")
+            elif "firefox" in app.split(" "):
+                operation.open_app("firefox")
+            elif "edge" in app.split(" "):
+                operation.open_app("edge")
+            elif "calculator" in app.split(" "):
+                operation.open_app("calc")
+            elif "Notepad" in app.split(" "):
+                operation.open_app("notepad")
+            elif "paint" in app.split(" "):
+                operation.open_app("mspaint")
+            elif "command prompt" in app.split(" ") or "cmd" in app.split(" "):
+                operation.open_app("cmd")
+            elif "task manager" in app.split(" "):
+                operation.open_app("taskmgr")
+            elif "control panel" in app.split(" "):
+                operation.open_app("control")
+            elif "windows media player" in app.split(" ") or "media playyer" in app.split(" "):
+                operation.open_app("wmplayer")
+            elif "vlc" in app.split(" "):
+                operation.open_app("vlc")
+            else:
+                connect.speak("I'm sorry, I can't find that application.")
+    MUSIC = ["music", "song"]
+    for pharse in MUSIC:
+        if pharse in text:
+            print("listening on music...")
+            Oapp.music()
             
