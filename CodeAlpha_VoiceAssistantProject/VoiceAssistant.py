@@ -13,12 +13,7 @@ import pyttsx3
 import pytz # This library is essential for handling time zones accurately and reliably in Python.
 import subprocess
 import pyautogui
-import subprocess
 import wikipedia
-import os
-import time
-
-
 
 # inner import
 from helper import communacations
