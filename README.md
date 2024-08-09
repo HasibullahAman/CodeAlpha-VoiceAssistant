@@ -101,7 +101,7 @@ You can study each task separately and, if necessary, use it or share your criti
         <h3 style="text-align: left;
             font-size: 1.2em;
             margin-bottom: 20px;">Clone the repository:</h3>
-    <code>git clone https://github.com/HasibullahAman/CodeAlphaInternship.git</code>
+    <code>git clone https://github.com/HasibullahAman/CodeAlpha-VoiceAssistant.git</code>
             <h3 style="text-align: left;
             font-size: 1.2em;
             margin-bottom: 20px;">Run the VoiceAisstant script:</h3>
