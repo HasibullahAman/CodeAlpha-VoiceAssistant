@@ -165,3 +165,10 @@ cython_debug/
 # ------- add by user
 # I use the git ignore python template, so some folder and file alrady added in gitignore
 TaskDocument
+Video-Learning
+CodeAlpha_VoiceAssistantProject/*.mp3
+CodeAlpha_VoiceAssistantProject/credentials.json
+credentials.json
+CodeAlpha_VoiceAssistantProject/*note.txt
+OtherCode
+CodeAlpha_VoiceAssistantProject/token.pickle
