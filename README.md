@@ -1,6 +1,14 @@
 <body style="font-family: Arial, sans-serif;
             margin: 5% 20% 5% 20%;
             padding: 5%;">
+        <h1 style="text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;">CodeAlpha Internship</h1>
+        <p style="text-align: justify;
+            line-height: 1.5;
+            margin-bottom: 20px;">    In this phase, and during this process, I will strive to document and make available to you all the work I have done during the Internship offered to me by CodeAlpha. This Internship will last for three months, and I will work as a Python Developer with the CodeAlpha organization.
+
+You can study each task separately and, if necessary, use it or share your criticisms and suggestions with me via the email address below. hasib.aman7@gmail.com .</p>
     <h1 style="text-align: center;
             font-size: 2em;
             margin-bottom: 20px;">First Task</h1>
@@ -98,11 +106,4 @@
             font-size: 1.2em;
             margin-bottom: 20px;">Run the VoiceAisstant script:</h3>
     <code>python .\VoiceAssistant.py</code>
-
-
-
-In this phase, and during this process, I will strive to document and make available to you all the work I have done during the Internship offered to me by CodeAlpha. This Internship will last for three months, and I will work as a Python Developer with the CodeAlpha organization.
-
-You can study each task separately and, if necessary, use it or share your criticisms and suggestions with me via the email address below. hasib.aman7@gmail.com
-
 </body>
