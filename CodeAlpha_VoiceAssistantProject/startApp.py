@@ -22,13 +22,10 @@ class startApp:
         
     
     def username():
-        connect.speak("What should i call you sir")
-        uname = connect.get_audio()
         connect.speak("Welcome Mister")
-        connect.speak(uname)
         columns = shutil.get_terminal_size().columns       
         print("#####################".center(columns))
-        print("Welcome Mr.", uname.center(columns))
+        print("Welcome Mr.")
         print("#####################".center(columns))
         connect.speak("How can i Help you, Sir")  
     
